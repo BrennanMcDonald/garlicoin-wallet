@@ -409,3 +409,46 @@ exports.postForgot = (req, res, next) => {
     .then(() => res.redirect('/forgot'))
     .catch(next);
 };
+
+/**
+ * GET /transfer
+ * transfer funds page
+ */
+exports.getTransfer = (req, res) => {
+  var resp = client.getBalance(req.user.email,function(err, bal) {
+    res.render('account/transfer', {
+      title: 'Transfer Funds',
+      balance: bal
+    });
+  });
+};
+
+/**
+ * POST /transfer
+ * Transfer Funds
+ */
+exports.postTransfer = (req, res, next) => {
+  req.assert('address', 'Please enter a valid receiving address.');
+  req.sanitize('address');
+  req.assert('amount', 'Please enter a valid amount.');
+  req.sanitize('amount');
+
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/account');
+  }
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    var account = user.email
+    var toAddress = req.body.address
+    var amount = req.body.amount
+    var resp = client.sendFrom(account, toAddress, amount ,function(err, balance) {
+      if (err) return console.log(err);
+      console.log(balance);
+      return balance
+    });
+  });
+};

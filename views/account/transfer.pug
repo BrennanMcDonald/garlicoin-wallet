@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Transfer Funds
+
+  h3 Avaliable Funds: #{balance}
+
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label(class='col-sm-2 control-label', for='address') Address:
+      .col-sm-6
+        input.form-control(type='text', name='address', id='address', autofocus=true)
+      label(class='col-sm-1 control-label', for='amount') Amount:
+      .col-sm-3
+        input.form-control(type='text', name='amount', id='amount')
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-envelope
+          | Send

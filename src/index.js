@@ -8,13 +8,9 @@ var client = new litecoin.Client({
   pass: 'PASS'
 });
 
-var resp = client.getNewAddress("asdf",function(err, balance) {
+var resp = client.sendFrom("brennan.mcdonald.mail@gmail.com", "ms9oooDXyXxfuRML1CKN1dNoimtucCFPQf", 100000 ,function(err, balance) {
   if (err) return console.log(err);
   console.log(balance);
-  var resp = client.getAddressesByAccount("asdf",function(err, adds) {
-    if (err) return console.log(err);
-    console.log(adds);
-  });
 });
 
 
