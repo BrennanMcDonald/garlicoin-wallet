@@ -1,0 +1,22 @@
+{
+  "name": "garlicoin-wallet",
+  "version": "1.0.0",
+  "description": "A Simple wallet to make RPC calls to a garlicoin node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/brennanmcdonald/garlicoin.git"
+  },
+  "author": "Brennan McDonald",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brennanmcdonald/garlicoin/issues"
+  },
+  "homepage": "https://github.com/brennanmcdonald/garlicoin#readme",
+  "dependencies": {
+    "node-litecoin": "^1.0.1"
+  }
+}

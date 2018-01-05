@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+	.page-header
+		h3 My Addresses - Balance: #{balance}GRC
+	each add in adds
+		.col-sm-7
+			h4= add
