@@ -17,7 +17,7 @@ exports.getLogin = (req, res) => {
   });
 };
 const client = new litecoin.Client({
-  host: '52.89.91.13',
+  host: '127.0.0.1',
   port: 8333,
   user: 'USER',
   pass: 'PASS'
@@ -420,6 +420,7 @@ exports.getTransfer = (req, res) => {
       title: 'Transfer Funds',
       balance: bal
     });
+  console.log(bal);
   });
 };
 
@@ -448,7 +449,7 @@ exports.postTransfer = (req, res, next) => {
     var resp = client.sendFrom(account, toAddress, amount ,function(err, balance) {
       if (err) return console.log(err);
       console.log(balance);
-      return balance
+      return res.redirect('/wallet');
     });
   });
 };
