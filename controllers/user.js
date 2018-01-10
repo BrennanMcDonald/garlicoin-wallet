@@ -144,11 +144,22 @@ exports.getAccount = (req, res) => {
     var resp = client.getAddressesByAccount(req.user.email,function(err, adds) {
       var resp = client.getBalance(req.user.email,function(err, bal) {
         console.log(adds);
-        res.render('account/wallet', {
-          title: 'My Wallet',
-          adds: adds,
-          balance: bal
-        });
+        if (req.query.pass) {
+          var resp = client.getTransaction(req.query.pass, function(err, tx){
+            res.render('account/wallet', {
+              title: 'My Wallet',
+              adds: adds,
+              balance: bal,
+              transaction: tx
+            });
+          });
+        } else {
+          res.render('account/wallet', {
+            title: 'My Wallet',
+            adds: adds,
+            balance: bal
+          });
+        }
       });
     });
   }
@@ -449,7 +460,8 @@ exports.postTransfer = (req, res, next) => {
     var resp = client.sendFrom(account, toAddress, amount ,function(err, balance) {
       if (err) return console.log(err);
       console.log(balance);
-      return res.redirect('/wallet');
+      var pass = encodeURIComponent(balance);
+      return res.redirect('/wallet?tx='+pass);
     });
   });
 };
