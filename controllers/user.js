@@ -17,8 +17,8 @@ exports.getLogin = (req, res) => {
   });
 };
 const client = new litecoin.Client({
-  host: '127.0.0.1',
-  port: 8333,
+  host: '52.89.91.13',
+  port: 42070,
   user: 'USER',
   pass: 'PASS'
 });
