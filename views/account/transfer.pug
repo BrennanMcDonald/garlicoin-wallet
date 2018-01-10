@@ -2,21 +2,22 @@ extends ../layout
 
 block content
   .page-header
-    h3 Transfer Funds
+    h3 
 
-  h3 Avaliable Funds: #{balance}
 
   form.form-horizontal(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label(class='col-sm-2 control-label', for='address') Address:
-      .col-sm-6
-        input.form-control(type='text', name='address', id='address', autofocus=true)
-      label(class='col-sm-1 control-label', for='amount') Amount:
-      .col-sm-3
-        input.form-control(type='text', name='amount', id='amount')
-    .form-group
-      .col-sm-offset-2.col-sm-8
-        button.btn.btn-primary(type='submit')
-          i.fa.fa-envelope
-          | Send
+    .form_wrapper
+      .row
+        .col-sm-12
+          h3 Avaliable Funds: #{balance}
+      .row(style="padding-bottom:25px;")
+        .col-sm-12
+          input.example.flex-input.margin-10(type='text', name='address', id='address', autofocus=true, placeholder="Address")
+      .br
+      .row(style="padding-bottom:25px;")
+        .col-sm-12
+          input.example.flex-input.margin-10(type='text', name='amount', id='amount', placeholder="Amount")
+      .row
+        .field-container.col-sm-12
+          button.submit-transaction-button.margin-10.pull-right(type="submit") Send

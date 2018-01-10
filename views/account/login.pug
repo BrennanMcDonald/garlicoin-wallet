@@ -3,25 +3,21 @@ extends ../layout
 block content
   .page-header
     h3 Sign in
-  form.form-horizontal(method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
-        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
-    .form-group
-      label.col-sm-3.control-label(for='password') Password
-      .col-sm-7
-        input.form-control(type='password', name='password', id='password', placeholder='Password', required)
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        button.col-sm-3.btn.btn-primary(type='submit')
-          i.fa.fa-user
-          | Login
-        a.btn.btn-link(href='/forgot') Forgot your password?
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        hr
+  .signup_container
+    .signup_info
+      .signup_form
+          .form_wrapper
+            form#account_create(method="post")
+              input(type='hidden', name='_csrf', value=_csrf)
+              .row
+                .custom_dropdown.margin-10
+                  input#email.example.flex-input.margin-10(type='email', name='email', placeholder='Email', autofocus, required)
+              .row
+                .custom_dropdown.margin-10
+                  input#password.example.flex-input.margin-10(type='password', name='password', placeholder='Password', required)
+              .row
+                .field-container
+                  button.create-account-button.margin-10(type="submit") Login
     .form-group
       .col-sm-offset-3.col-sm-7
         a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')

@@ -1,6 +1,17 @@
 .signup_header
             .logo
-              a(href="//wistia.com")
-                img(height="34" src="//wistia.com/assets/global_navigation/logos/new_wgh_wistia_logo_white_2x-bf7a3bf14b5032cf6d9fd143c58483f5.png" width="203")
-            .loginButton
-              a(href="https://secure.wistia.com/login") Login
+              a(href="/")
+                h2(style="color:white;") Toaster Oven
+            if user
+
+              .loginButton(style="float:right;")
+                a(href="/logout") Log Out
+              .loginButton(style="float:right;")
+                a(href="/wallet") Wallet
+              .loginButton(style="float:right;")
+                a(href="/transfer") Transfer
+              h4(style="color:white;") Welcome #{user.email}
+
+            if !user
+              .loginButton
+                a(href="/login") Login
