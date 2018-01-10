@@ -1,17 +1,145 @@
 extends layout
 
 block content
-  h1 Gralicoin Wallet PoC
-  p.Probably terribly insecure and bad but here it is tada
-  hr
-  .row
-    .col-sm-6
-      h2 How to use
-      p Simply register for an account and you'll have your first address at 
-        a(href="/wallet") /wallet
-      p
-    .col-sm-6
-      h2 Send Money 
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+  .signup_container
+    .signup_info
+      h2 Put your business videos to work
+      h4
+        | Create a free Wistia account to customize your videos, share them with your growing audience,
+        | learn from detailed analytics, and more.
+      .signup_form
+        .form_wrapper
+          form#account_create(action="https://app.wistia.com/freebies" method="post")
+            .row
+            input#account_source_pages(type="hidden" name="account[account_funnel_details_attributes][page_views]" value="")
+            input#account_source_referrer(type="hidden" name="account[account_funnel_details_attributes][referrer]" value="")
+            input#account_source_landing(type="hidden" name="account[account_funnel_details_attributes][landing]" value="")
+            input#account_source_time(type="hidden" name="account[account_funnel_details_attributes][found_at]" value="")
+            input#account_visitor_key(type="hidden" name="account[contact_visitor_key]" value="")
+            input#account_hubspot_utk(type="hidden" name="account[contact_hubspot_utk]" value="")
+            input#account_utm_logs_json(type="hidden" name="account[utm_logs_json]" value="")
+            input#account_direct_free(type="hidden" name="account[direct_free]" value="true")
+            input(name="account[marketing_plan_selection]" type="hidden")
+            input#optimizely_data_json(name="account[optimizely_data_json]" type="hidden" value="")
+            input(name="account[terms_of_service]" type="hidden" value="1")
+            input(name="account[plan_sku]" type="hidden" value="free_three_videos_oct_2016")
+            input#talon(name="talon" type="hidden" value='{"version": 5, "status": -1}')
+            input(name="on_failure_redirect_to" type="hidden" value="https://wistia.com/account/failed")
+            .row
+              .field-container
+                input#first_name.example.flex-input.margin-10(name="account[first_name]" placeholder="First name" required="" type="text")
+              .field-container
+                input#last_name.example.flex-input.margin-10(name="account[last_name]" placeholder="Last name" required="" type="text")
+            .row
+              .field-container
+                input#email.example.flex-input.margin-10(name="account[contact_email]" placeholder="Your work email" required="" type="email")
+              .field-container
+                input#password.example.flex-input.margin-10(name="account[password]" placeholder="Set a password" required="" type="password")
+                .error-tooltip
+                  span.error-arrow
+                  .error-info
+                    | 8 characters or more, pretty please!
+            .row
+              .custom_dropdown.margin-10
+                span.custom_select_value.hear-about-Wistia
+                  | How did you first hear about Wistia?
+                .custom_select_arrow
+                select#survey_questions(name="account[account_funnel_details_attributes][signup_survey]")
+                  option(selected="" disabled="" value="")
+                    | How did you first hear about Wistia?
+                  option(value="radio")
+                    | Radio
+                  option(value="referral")
+                    | Referral/Word of Mouth
+                  option(value="press release")
+                    | PR/Article/Blog/Review
+                  option(value="public radio")
+                    | Public Radio/NPR
+                  option(value="podcast")
+                    | Podcast
+                  option(value="streaming radio")
+                    | Streaming Radio
+                  option(value="search engine")
+                    | Search Engine
+                  option(value="conference or event")
+                    | Conference or Event
+                  option(value="video ad")
+                    | Video Ad
+                  option(value="banner ad")
+                    | Banner Ad
+                  option(value="social media")
+                    | Social Media
+                  option.needsMoreDetails(value="Other")
+                    | Other
+            // TODO: I don't think this option exists anymore...
+            .row
+              .agency-container
+                input#agency_referral_other.example.margin-10(maxlength="200" name="account[account_funnel_details_attributes][agency_referrer]" placeholder="Which agency referred you?" type="text")
+            .row
+              .signup_other-container
+                input#signup_other.example.margin-10(maxlength="200" name="account[account_funnel_details_attributes][signup_other]" placeholder="Please share more details..." type="text")
+            .row
+              .field-container
+                button.create-account-button.margin-10(type="submit") Create account
+          .email_suggestion
+            | Did you mean
+            span.email
+              span.address asf
+              | @
+              span.domain gmail.com
+            | ?
+          .fineprint
+            p
+              | By clicking this button, you agree to our
+              a.terms(href="//wistia.com/terms" target="_blank") Terms of Service
+              | .
+  #wistia_407bc3c2b5(data-video-height="1" data-video-width="1" style="width:1px;height:1px;")  
+  section#pricing-questions
+    .container
+      .column
+        .pricing-question
+          h4 Is there a catch?
+          p
+            | Nope, no funny business. All it takes to start your account is your work email address and
+            | a few other pieces of information. We don't even ask for your credit card.
+        .pricing-question
+          h4 Are there any limits?
+          p
+            | The Free Plan comes with 3 videos, 200 GB of
+            a(href="/doc/bandwidth" target="_blank") bandwidth
+            | per month, and enough storage to house those videos. It also comes with Wistia player branding.
+            | We've set our bandwidth limits so high, that most Wistia users will never need to worry about it.
+            | In fact, 99% of businesses don’t even come close.
+        .pricing-question
+          h4 Do I have to worry about you selling my email or data?
+          p
+            | No. Your contact information and private data are yours and yours alone.
+            | They're safe with us. We'll email you about product and company updates,
+            | but you can opt out at any time. Learn more about our
+            a.terms(href="//wistia.com/privacy" target="_blank") Privacy Policy
+            | .
+      .column
+        .pricing-question
+          h4 I'm ready to buy a paid plan right now. How should I go about doing that?
+          p
+            | No problem. Simply create your account, then navigate to
+            strong Account > Settings > Purchase
+            | to buy a paid plan. Easy, right?
+        .pricing-question
+          h4 How can I speak with someone from your sales team?
+          p
+            a(href="/pricing/getintouch" target="_blank") Our sales team is here to help you anytime
+            | .
+            | We're excited to talk all things video with you!
+        .pricing-question
+          h4 Can I try out one of your advanced integrations?
+          p
+            | You sure can. After you create your account, navigate to
+            strong Account > Settings > Integrations
+            | and follow the instructions on the page.
+        .pricing-question
+          h4 I have other questions! How can I get in touch with Wistia?
+          p
+            a(href="/pricing/getintouch" target="_blank") Feel free to get in touch
+            | .
+            | We’ll be happy to clarify anything, or just help you get up and running with your new account.

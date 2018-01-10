@@ -1,46 +1,6 @@
-.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand(href='/')
-        i.fa.fa-cube
-        | Project name
-    .collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li(class=(title === 'Home') ? 'active' : undefined)
-          a(href='/') Home
-        li(class=(title === 'Explorer') ? 'active' : undefined)
-          a(href='http://explorer.garlicoin.io') Explorer
-        li
-          a(href='/status') Status
-        if user
-        li(class=(title === 'Wallet') ? 'active' : undefined)
-          a(href='/wallet') Wallet
-        li(class=(title === 'Transfer') ? 'active' : undefined)
-          a(href='/transfer') Transfer 
-
-      ul.nav.navbar-nav.navbar-right
-        if !user
-          li(class=(title === 'Login') ? 'active' : undefined)
-            a(href='/login') Login
-          li(class=(title === 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
-        else
-          li.dropdown(class=(title === 'Account Management') ? 'active' : undefined)
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src=user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-              span= user.profile.name || user.email || user.id
-              i.caret
-            ul.dropdown-menu
-              li
-                a(href='/account') My Account
-              li.divider
-              li
-                a(href='/logout') Logout
+.signup_header
+            .logo
+              a(href="//wistia.com")
+                img(height="34" src="//wistia.com/assets/global_navigation/logos/new_wgh_wistia_logo_white_2x-bf7a3bf14b5032cf6d9fd143c58483f5.png" width="203")
+            .loginButton
+              a(href="https://secure.wistia.com/login") Login
